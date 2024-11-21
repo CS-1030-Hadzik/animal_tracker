@@ -7,3 +7,5 @@ if __name__ == "__main__":
     # TODO: Create an instance of the Dog class
     # TODO: Print the Dog instance
     # TODO: Call the method to make the dog-specific sound
+
+    # TODO print out all the animals
