@@ -76,6 +76,16 @@ The purpose of `main.py` is to create and test the `Animal` and `Dog` classes to
   - Calling the `speak` method.
 
 
+## Example Output
+
+Here’s the expected output when running the program:
+
+![Example Output](/images/output.png)
+
+The output includes:
+1. The string representation of `Animal` and `Dog` objects.
+2. The printed messages from their `speak` methods.
+3. A listing of all objects stored in the `all_animals` list.
 
 
 
@@ -93,4 +103,7 @@ Kingdom: 'Animalia', Name: 'Buddy', Species: 'Canine', Breed: 'Golden Retriever'
 
 ## Submission
 - Implement the tasks in the `animal.py` file.
-- Test the `Animal` class by importing it into your `main.py`.
+- Upload a screenshot of your score by running TestAnimals.py
+
+# Example
+![Example Test Output](/images/test_run.png)

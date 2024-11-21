@@ -1,9 +1,17 @@
 import unittest
+from unittest.mock import patch
+from io import StringIO
 from animal import Animal
 from dog import Dog
 
 class TestAnimals(unittest.TestCase):
     total_points = 0  # Class-level variable to track points
+    user_name = ""  # Class-level variable to store the user's name
+
+    @classmethod
+    def setUpClass(cls):
+        # Ask for the user's name before tests start
+        cls.user_name = input("What is your name?")
 
     def test_animal_initialization(self):
         try:
@@ -16,12 +24,13 @@ class TestAnimals(unittest.TestCase):
         except Exception as e:
             print(f"test_animal_initialization failed: {e}")
 
-    def test_animal_speak(self):
+    @patch('sys.stdout', new_callable=StringIO)  # Mock stdout to capture print output
+    def test_animal_speak(self, mock_stdout):
         try:
             generic_animal = Animal("Generic", "Unknown")
-            with self.assertLogs() as log:
-                generic_animal.speak()
-            self.assertIn("The animal makes a noise.", log.output[0])
+            generic_animal.speak()
+            output = mock_stdout.getvalue().strip()  # Capture printed output
+            self.assertEqual(output, "The animal makes a noise.")
             TestAnimals.total_points += 10  # Add points for passing this test
             print("test_animal_speak passed: +10 points")
         except Exception as e:
@@ -47,12 +56,13 @@ class TestAnimals(unittest.TestCase):
         except Exception as e:
             print(f"test_dog_initialization failed: {e}")
 
-    def test_dog_speak(self):
+    @patch('sys.stdout', new_callable=StringIO)  # Mock stdout to capture print output
+    def test_dog_speak(self, mock_stdout):
         try:
             buddy = Dog("Buddy", "Canine", "Golden Retriever")
-            with self.assertLogs() as log:
-                buddy.speak()
-            self.assertIn("The dog barks.", log.output[0])
+            buddy.speak()
+            output = mock_stdout.getvalue().strip()  # Capture printed output
+            self.assertEqual(output, "The dog barks.")
             TestAnimals.total_points += 10  # Add points for passing this test
             print("test_dog_speak passed: +10 points")
         except Exception as e:
@@ -82,7 +92,9 @@ class TestAnimals(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # Print the total points and the user's name
         print(f"\nTotal Points: {cls.total_points}/70")
+        print(f"Great job, {cls.user_name}!")
         if cls.total_points == 70:
             print("Congratulations! You passed all tests.")
         else:
