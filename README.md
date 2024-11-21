@@ -84,7 +84,9 @@ Kingdom: 'Animalia', Name: 'Generic', Species: 'Unknown'
 The animal makes a noise.
 Kingdom: 'Animalia', Name: 'Buddy', Species: 'Canine', Breed: 'Golden Retriever'
 The dog barks.
-[Animal(Name='Generic', Species='Unknown'), Dog(Name='Buddy', Species='Canine', Breed='Golden Retriever')]
+All Animals:
+Kingdom: 'Animalia', Name: 'Generic', Species: 'Unknown'
+Kingdom: 'Animalia', Name: 'Buddy', Species: 'Canine', Breed: 'Golden Retriever'
 ```
 
 
